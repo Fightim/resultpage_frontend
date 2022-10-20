@@ -151,7 +151,7 @@ height="50"
   </StyledButton5>
   <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 1.png"
+src="img/pngwing 3.png"
 width="50"
 height="50"
 /> 
