@@ -12,14 +12,19 @@ const ModalFront = (props) => {
         <section>
           <header>
             {header}
-            <button className="close" onClick={close}>
+            {/* <button className="close" onClick={close}>
               &times;
-            </button>
+            </button> */}
           </header>
           <main>{props.children}</main>
           <footer>
-            <button className="close" onClick={close}>
-              close
+            <button className="close" onClick={close}> 
+            <div className="apply">
+            <img className="checkimg"
+                src="img/apply.png"
+                width="16px"
+                height="16px"/>
+              &nbsp;확인 </div>
             </button>
           </footer>
         </section>
