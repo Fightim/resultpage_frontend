@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import {Box, Grommet,Button, Button as GrommetButton,Card,CardBody,CardFooter,CardHeader} from 'grommet';
 import "./FrontEnd.css"
-
+import ModalFront from './ModalFront'
+import { useState } from "react";
 const StyledInput=styled.input`
 height: 36px;
 width: 806px;
@@ -111,8 +112,17 @@ const AppBar2=(props)=>(
   />
 );
 
-function FrontEnd() {
 
+
+function FrontEnd() {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <center>
@@ -204,13 +214,17 @@ height="50"
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledInput placeholder={`이름을 입력해주세요.`}/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledButton><div className="apply">
+<StyledButton onClick={openModal}><div className="apply">
 <img className="checkimg"
 src="img/apply.png"
 width="16px"
 height="16px"
 /> 이름 확인
-</div></StyledButton>
+</div></StyledButton> 
+<ModalFront open={modalOpen} close={closeModal} header="이름 확인">
+        Back-end가 없습니다. <br/>
+        API를 호출할 수 없습니다.
+      </ModalFront>
 
 <br/>
 <br/>
