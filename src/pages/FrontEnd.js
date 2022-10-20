@@ -7,11 +7,9 @@ const StyledInput=styled.input`
 height: 36px;
 width: 806px;
 border-radius: 5px;
-font-size: 15px;
+font-size: 20px;
 border: 2px solid gray;
-alignItems: 'center'
-justifyContent: 'center',
-padding:10px;
+padding: 0 0 0 12px;
 `;
 
 const StyledButton = styled.button`
@@ -203,17 +201,23 @@ height="50"
 <br/>
 <br/>
 <a>당신의 이름</a> 
-&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
 <StyledInput placeholder={`이름을 입력해주세요.`}/>
-&nbsp;&nbsp;
-<StyledButton>이름 확인</StyledButton>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<StyledButton><div className="apply">
+<img className="checkimg"
+src="img/apply.png"
+width="16px"
+height="16px"
+/> 이름 확인
+</div></StyledButton>
 
 <br/>
 <br/>
 <a>텍스트 입력</a>
-&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
 <StyledInput placeholder={`아무 텍스트나 입력해주세요.`}/>
-&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
 <StyledButton2>추가 버튼</StyledButton2>
 
 <br/>

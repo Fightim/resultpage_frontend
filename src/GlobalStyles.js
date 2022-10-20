@@ -24,14 +24,16 @@ body {
     //align-items: center;
     justify-content: center;
     background-color: #FFF;
-    font-weight: 500;
+    font-weight: bold;
     font-family: 'S-CoreDream-3Light';
+    font-size:20px;
   }
 
   button,input {
     cursor: pointer;
     padding: 0;
     font-family:inherit;
+    font-weight:bold;
   }
   
   
