@@ -1,6 +1,8 @@
 import React from 'react';
 import FrontEnd from './pages/FrontEnd';
 import { GlobalStyle } from './GlobalStyles';
+import PlusBackend from './pages/PlusBackend';
+import PlusDB from './pages/PlusDB'
 function App() {
   return (
     <>
@@ -9,7 +11,11 @@ function App() {
 
     </FrontEnd>
 
+<hr/>
+    <PlusBackend/>
 
+    <hr/>
+    <PlusDB/>
 </>
 
   );
