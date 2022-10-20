@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import {Box, Grommet,Button, Button as GrommetButton,Card,CardBody,CardFooter,CardHeader} from 'grommet';
-import { TextField } from "material-ui";
 import "./FrontEnd.css"
 
 const StyledInput=styled.input`
@@ -12,6 +11,7 @@ font-size: 15px;
 border: 2px solid gray;
 alignItems: 'center'
 justifyContent: 'center',
+padding:10px;
 `;
 
 const StyledButton = styled.button`
@@ -44,6 +44,7 @@ const StyledButton3 = styled.button`
   font-color: #FFFFFF;
   border-radius: 5px;
   color:white;
+  border-color:#FF9A3E;
 `;
 
 const StyledButton4 = styled.button`
@@ -61,6 +62,7 @@ const StyledButton5 = styled.button`
   font-size: 16px;
   color: white;
   border-radius: 5px;
+  border-color:#124271;
 `;
 
 const ShadowedBox = styled.div`

@@ -1,7 +1,14 @@
 import {createGlobalStyle} from "styled-components";
-
+import reset from "styled-reset";
 
 export const GlobalStyle = createGlobalStyle`
+${reset}
+* {
+  box-sizing : border-box;
+}
+body{
+  font-family: 'S-CoreDream-3Light';
+}
 @font-face {
     font-family: 'S-CoreDream-3Light';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
@@ -20,5 +27,12 @@ body {
     font-weight: 500;
     font-family: 'S-CoreDream-3Light';
   }
+
+  button,input {
+    cursor: pointer;
+    padding: 0;
+    font-family:inherit;
+  }
+  
   
 `;
