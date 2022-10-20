@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {Box, Grommet,Button, Button as GrommetButton} from 'grommet';
+import {Box, Grommet,Button, Button as GrommetButton,Card,CardBody,CardFooter,CardHeader} from 'grommet';
 import { TextField } from "material-ui";
+import "./FrontEnd.css"
+
 const StyledInput=styled.input`
 height: 36px;
 width: 806px;
@@ -16,49 +18,56 @@ const StyledButton = styled.button`
   height: 36px;
   width: 128px;
   background-color: #EB5757;
-  font-size: 20px;
+  border-color: #EB5757;
   font-color: #FFFFFF;
   border-radius: 5px;
-  font-size:15px;
+  font-size:16px;
+  color:white;
 `;
 
 const StyledButton2 = styled.button`
   height: 36px;
   width: 128px;
   background-color: #34B755;
-  font-size: 20px;
   font-color: #FFFFFF;
   border-radius: 5px;
-  font-size:15px;
+  border-color:#34B755;
+  font-size:16px;
+  color:white;
 `;
 
 const StyledButton3 = styled.button`
   height: 35px;
   width: 964px;
-  background-color: #34B755;
+  background-color: #FF9A3E;
   font-size: 20px;
   font-color: #FFFFFF;
   border-radius: 5px;
-  font-size:15px;
+  color:white;
 `;
 
 const StyledButton4 = styled.button`
   height: 100px;
   width: 100px;
   background-color: #ffffff;
-  font-size: 20px;
+  font-size: 16px;
   font-color: #FFFFFF;
   border-radius: 5px;
-  font-size:15px;
 `;
 const StyledButton5 = styled.button`
   height: 35px;
   width: 100px;
   background-color: #124271;
-  font-size: 20px;
-  font-color: #FFFFFF;
+  font-size: 16px;
+  color: white;
   border-radius: 5px;
-  font-size:15px;
+`;
+
+const ShadowedBox = styled.div`
+    width: 100px;
+    height:100px;
+    background-color: #DFDFDF;
+    border-radius: 5px;
 `;
 
 const theme = {
@@ -108,27 +117,87 @@ function FrontEnd() {
   return (
     <center>
     <div>
-<h1>
-    Front / Back / DB
-</h1>
+<br/>
+<br/>
+<br/>
 
-<AppBar2>
+{/* <div style={{display:"flex", alignContent:"center"}}> */}
+ {/* <div className="out">
+  <div className="in">
+<Card height="100px" width="100px" background="light-1">
+  <CardHeader pad="14px" height="35px" background="#124271">Front-end</CardHeader>
+  <CardBody background="light-2">Body</CardBody>
+</Card>
+  </div>
+
+  &emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;
+
+  <div className="in">
+<Card  height="100px" width="100px" background="light-1">
+  <CardHeader pad="17px" height="35px" background="#124271">Back-end</CardHeader>
+  <CardBody background="light-2">Body</CardBody>
+</Card>
+  </div>
+
+  &emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;
+
+  <div className="in">
+<Card  height="100px" width="100px" background="light-1">
+  <CardHeader pad="19px" height="35px" background="#124271">DB</CardHeader>
+  <CardBody background="light-2">Body</CardBody>
+</Card>
+  </div>
+</div> */}
+
+<div className="out">
+
+<ShadowedBox>
   <StyledButton5>
     Front-end
   </StyledButton5>
-</AppBar2>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<AppBar2>
+
+<div className="check" style={{margin:6}}>
+<img className="checkimg"
+src="img/pngwing 3.png"
+width="50"
+height="50"
+/> 
+</div>
+</ShadowedBox>
+
+
+&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;
+
+<ShadowedBox>
   <StyledButton5>
     Back-end
   </StyledButton5>
-</AppBar2>
-&nbsp;&nbsp;&nbsp;&nbsp;
-<AppBar2>
+  <div className="check" style={{margin:6}}>
+<img className="checkimg"
+src="img/pngwing 1.png"
+width="50"
+height="50"
+/> 
+</div>
+</ShadowedBox>
+&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;
+<ShadowedBox>
   <StyledButton5>
     DB
   </StyledButton5>
-</AppBar2>
+  <div className="check" style={{margin:6}}>
+<img className="checkimg"
+src="img/pngwing 1.png"
+width="50"
+height="50"
+/> 
+</div>
+</ShadowedBox>
+</div>
 <br/>
 <br/>
 <a>당신의 이름</a> 
@@ -157,7 +226,9 @@ function FrontEnd() {
 </Box>
 
 </AppBar>
-
+<br/>
+<br/>
+<br/>
     </div>
     </center>
   );
