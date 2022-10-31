@@ -3,8 +3,8 @@ import styled from "styled-components";
 import {Box, Grommet,Button, Button as GrommetButton,Card,CardBody,CardFooter,CardHeader} from 'grommet';
 import "./FrontEnd.css"
 import ModalDB from "./ModalDB"
-import { useState } from "react";
-
+import { useState,useEffect } from "react";
+import axios from "axios";
 
 const StyledInput=styled.input`
 height: 36px;
@@ -59,6 +59,17 @@ const StyledButton5 = styled.button`
   border-color:#124271;
 `;
 
+const LargeBox = styled.button`
+  height: 362px;
+  width: 964px;
+  background-color: white;
+  border-radius: 5px;
+  border-color:grey;
+  padding:0;
+  margin:0;
+`;
+
+
 const ShadowedBox = styled.div`
     width: 100px;
     height:100px;
@@ -103,6 +114,18 @@ function PlusDB() {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  //axios api 호출하기
+  const [data,setData]=useState(null);
+
+  const onClick=()=>{
+    axios
+      .get('https://jsonplaceholder.typicode.com/todos/1')
+      .then((response)=>{
+        setData(response.data);
+      });
+  };
+
 
   return (
     <center>
@@ -182,20 +205,26 @@ height="16px"
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledInput placeholder={`아무 텍스트나 입력해주세요.`}/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledButton2>추가 버튼</StyledButton2>
+<StyledButton2 onClick={onClick}>추가 버튼</StyledButton2>
 
 <br/>
 <br/>
 <br/>
 <Grommet theme={theme}></Grommet>
 <AppBar>
-
- <Box direction='row'>
-
+ <Box direction='column'>
  <StyledButton3>결과</StyledButton3>
-</Box>
 
+ {data && (
+        <textarea
+          rows={7}
+          value={JSON.stringify(data, null, 2)}
+          readOnly={true}
+        />
+      )}
+</Box>
 </AppBar>
+
 <br/>
 <br/>
 <br/>
