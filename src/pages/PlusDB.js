@@ -120,12 +120,16 @@ function PlusDB() {
 
   const onClick=()=>{
     axios
-      .get('https://jsonplaceholder.typicode.com/todos/1')
+      .get('http://52.78.76.251/test')
       .then((response)=>{
         setData(response.data);
       });
+      
   };
 
+  axios.defaults.headers['Access-Control-Allow-Origin']='*';
+  axios.defaults.withCredentials=true;
+  onClick.withCredentials=true;
 
   return (
     <center>
