@@ -6,6 +6,7 @@ import ModalDB from "./ModalDB"
 import { useState,useEffect } from "react";
 import axios from "axios";
 
+
 const StyledInput=styled.input`
 height: 36px;
 width: 806px;
@@ -116,16 +117,53 @@ function PlusDB() {
   };
 
   //axios api 호출하기
-  const [data,setData]=useState(null);
+
+  //API GET 하는 방법
+  // const onClick=()=>{
+  //   axios
+  //     .get('http://13.124.155.40/text')
+  //     .then((response)=>{
+  //       setData(response.data);
+  //     });
+      
+  // };
+
+
+  const [name,setName]=useState("");
+  const [text,setText]=useState("");
+
+  // const onClick=()=>{
+  //   axios.post("http://52.78.76.251/text",{
+  //     name:name,
+  //     text:text
+  //   })
+  //   .then((response)=>{
+  //     setText(response.text);
+  //     setName(response.name);
+  //   });
+  // }
+
 
   const onClick=()=>{
-    axios
-      .get('http://52.78.76.251/test')
-      .then((response)=>{
-        setData(response.data);
-      });
-      
-  };
+    axios.post("http://52.78.76.251/text",
+      {
+      name:name,
+      text:text
+    })
+    .then((response)=>{
+      setText(response.data.text);
+      setName(response.data.name);
+      console.log(response);
+    });
+    }
+  
+
+  const onChange=(event)=>{
+    setText(event.target.value);
+  }
+  const onChange2=(event)=>{
+    setName(event.target.value);
+  }
 
   axios.defaults.headers['Access-Control-Allow-Origin']='*';
   axios.defaults.withCredentials=true;
@@ -189,7 +227,14 @@ height="50"
 <br/>
 <a>당신의 이름</a> 
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledInput placeholder={`이름을 입력해주세요.`}/>
+
+<StyledInput 
+placeholder={`이름을 입력해주세요.`}
+type="text"
+name={name}
+onChange={onChange2}
+/>
+
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledButton onClick={openModal}><div className="apply">
 <img className="checkimg"
@@ -207,9 +252,18 @@ height="16px"
 <br/>
 <a>텍스트 입력</a>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledInput placeholder={`아무 텍스트나 입력해주세요.`}/>
+<StyledInput 
+placeholder={`아무 텍스트나 입력해주세요.`}
+type="text"
+name={text}
+onChange={onChange}
+/>
+
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledButton2 onClick={onClick}>추가 버튼</StyledButton2>
+<StyledButton2 
+onClick={onClick}>추가 버튼</StyledButton2>
+
+
 
 <br/>
 <br/>
@@ -219,13 +273,16 @@ height="16px"
  <Box direction='column'>
  <StyledButton3>결과</StyledButton3>
 
- {data && (
+<p>{text} {name}</p>
+
+ {/* {setText && (
         <textarea
           rows={7}
-          value={JSON.stringify(data, null, 2)}
+          value={JSON.stringify(setText, null, 2)}
           readOnly={true}
         />
-      )}
+    )} */}
+
 </Box>
 </AppBar>
 

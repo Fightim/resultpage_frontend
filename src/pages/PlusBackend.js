@@ -188,7 +188,7 @@ height="16px"
 <Grommet theme={theme}></Grommet>
 <AppBar>
 
- <Box direction='row'>
+ <Box direction='column'>
 
  <StyledButton3>결과</StyledButton3>
 </Box>
