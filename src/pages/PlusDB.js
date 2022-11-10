@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import {Box, Grommet,Button, Button as GrommetButton,Card,CardBody,CardFooter,CardHeader} from 'grommet';
 import "./FrontEnd.css"
@@ -104,6 +104,16 @@ const AppBar=(props)=>(
   />
 );
 
+const ResultArea= styled.button`
+height: 100px;
+width: 964px;
+background-color: white;
+border-radius: 5px;
+border-color:grey;
+font-size:30px;
+padding:0;
+margin:0;
+`;
 
 
 function PlusDB() {
@@ -121,7 +131,7 @@ function PlusDB() {
   //API GET 하는 방법
   // const onClick=()=>{
   //   axios
-  //     .get('http://13.124.155.40/text')
+  //     .get("http://52.78.76.251/text")
   //     .then((response)=>{
   //       setData(response.data);
   //     });
@@ -131,7 +141,9 @@ function PlusDB() {
 
   const [name,setName]=useState("");
   const [text,setText]=useState("");
-
+  const nameRef = useRef(null);
+  const textRef = useRef(null);
+  const [data,setData]=useState("");
   // const onClick=()=>{
   //   axios.post("http://52.78.76.251/text",{
   //     name:name,
@@ -143,27 +155,38 @@ function PlusDB() {
   //   });
   // }
 
-
+  //추가 버튼
   const onClick=()=>{
     axios.post("http://52.78.76.251/text",
       {
-      name:name,
-      text:text
+      name:nameRef.current.value,
+      text:textRef.current.value
     })
     .then((response)=>{
-      setText(response.data.text);
-      setName(response.data.name);
-      console.log(response);
-    });
+      setText(JSON.stringify(response.data.result[0].text));
+      setName(JSON.stringify(response.data.result[0].name));
+      console.log("responseasdadasda : ",response);
+    })
+    
     }
   
-
-  const onChange=(event)=>{
-    setText(event.target.value);
+  //이름 확인
+  const onClickNamecheck=()=>{
+    axios.get("http://52.78.76.251/text/{name}",
+    {
+      params:{name:nameRef.current.value}
+    })
+    .then((response)=>{
+      setData(response.data);
+      console.log("불러오기 성공!",response);
+    })
   }
-  const onChange2=(event)=>{
-    setName(event.target.value);
-  }
+  // const onChange=(event)=>{
+  //   setText(event.target.value);
+  // }
+  // const onChange2=(event)=>{
+  //   setName(event.target.value);
+  // }
 
   axios.defaults.headers['Access-Control-Allow-Origin']='*';
   axios.defaults.withCredentials=true;
@@ -231,8 +254,7 @@ height="50"
 <StyledInput 
 placeholder={`이름을 입력해주세요.`}
 type="text"
-name={name}
-onChange={onChange2}
+ref={nameRef}
 />
 
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -255,13 +277,14 @@ height="16px"
 <StyledInput 
 placeholder={`아무 텍스트나 입력해주세요.`}
 type="text"
-name={text}
-onChange={onChange}
+ref={textRef}
 />
+
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledButton2 
 onClick={onClick}>추가 버튼</StyledButton2>
+
 
 
 
@@ -273,12 +296,26 @@ onClick={onClick}>추가 버튼</StyledButton2>
  <Box direction='column'>
  <StyledButton3>결과</StyledButton3>
 
-<p>{text} {name}</p>
+ <br/>
+ <br/>
+ <br/>
 
- {/* {setText && (
+
+ <ResultArea>name: {name}</ResultArea>
+ <ResultArea>text: {text}</ResultArea>
+
+ {/* {name && (
         <textarea
           rows={7}
-          value={JSON.stringify(setText, null, 2)}
+          value={JSON.stringify(name, null, 2)}
+          readOnly={true}
+        />
+    )}
+
+ {text && (
+        <textarea
+          rows={7}
+          value={JSON.stringify(text, null, 2)}
           readOnly={true}
         />
     )} */}

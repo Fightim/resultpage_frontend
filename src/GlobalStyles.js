@@ -22,11 +22,11 @@ body {
     overflow-y: scroll;
     display: flex;
     //align-items: center;
-    justify-content: center;
+    // justify-content: center;
     background-color: #FFF;
     font-weight: bold;
     font-family: 'S-CoreDream-3Light';
-    font-size:20px;
+    // font-size:20px;
   }
 
   button,input {
