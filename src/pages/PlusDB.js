@@ -151,8 +151,8 @@ function PlusDB() {
   // };
 
 
-  const [name,setName]=useState("");
-  const [text,setText]=useState("");
+  const [name,setName]=useState(null);
+  const [text,setText]=useState(null);
   const nameRef = useRef(null);
   const textRef = useRef(null);
   const [data,setData]=useState("");
@@ -176,8 +176,8 @@ function PlusDB() {
       text:textRef.current.value
     })
     .then((response)=>{
-      setText(JSON.stringify(response.data.result[0].text));
-      setName(JSON.stringify(response.data.result[0].name));
+      setText(JSON.stringify(response.data));
+      setName(JSON.stringify(response.data));
       
       console.log("responseasdadasda : ",response);
     })
@@ -187,12 +187,9 @@ function PlusDB() {
   //이름 확인
   const onClickNamecheck=()=>{
     closeModal();
-    axios.get("http://52.78.76.251/text/{name}",
-    {
-      params:{name:nameRef.current.value}
-    })
+    axios.get(`http://52.78.76.251/text/${nameRef.current.value}`)
     .then((response)=>{
-      setData(response.data);
+      setData(JSON.stringify(response.data));
       console.log("불러오기 성공:",response);
     })
   }
@@ -203,9 +200,7 @@ function PlusDB() {
   }
 
 
-  axios.defaults.headers['Access-Control-Allow-Origin']='*';
-  axios.defaults.withCredentials=true;
-  onClick.withCredentials=true;
+
 
   return (
     <center>

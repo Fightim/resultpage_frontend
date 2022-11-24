@@ -22,7 +22,8 @@ function App() {
 
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<FrontEnd />} />
+        {/* <Route path='/' element={<Loading />} /> */}
+        <Route path="/FrontEnd" element={<FrontEnd />} />
         <Route path="/PlusBackend" element={<PlusBackend />} />
         <Route path="/PlusDB" element={<PlusDB/>}/>
      
