@@ -1,9 +1,14 @@
 import React from 'react';
 import './ModalDB.css';
+// import { useState } from 'react';
+// import axios from 'axios';
+
 
 const ModalDB = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
+
+
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.

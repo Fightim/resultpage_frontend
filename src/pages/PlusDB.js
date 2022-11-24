@@ -104,8 +104,20 @@ const AppBar=(props)=>(
   />
 );
 
-const ResultArea= styled.button`
-height: 100px;
+const ResultAreaName= styled.button`
+height: 50px;
+width: 964px;
+background-color: white;
+border-radius: 5px;
+border-color:grey;
+font-size:30px;
+border:0;
+padding:0;
+margin:0;
+`;
+
+const ResultAreaText= styled.button`
+height: 200px;
 width: 964px;
 background-color: white;
 border-radius: 5px;
@@ -144,6 +156,7 @@ function PlusDB() {
   const nameRef = useRef(null);
   const textRef = useRef(null);
   const [data,setData]=useState("");
+  const [myname,setMyname]=useState("");
   // const onClick=()=>{
   //   axios.post("http://52.78.76.251/text",{
   //     name:name,
@@ -165,6 +178,7 @@ function PlusDB() {
     .then((response)=>{
       setText(JSON.stringify(response.data.result[0].text));
       setName(JSON.stringify(response.data.result[0].name));
+      
       console.log("responseasdadasda : ",response);
     })
     
@@ -172,21 +186,22 @@ function PlusDB() {
   
   //이름 확인
   const onClickNamecheck=()=>{
+    closeModal();
     axios.get("http://52.78.76.251/text/{name}",
     {
       params:{name:nameRef.current.value}
     })
     .then((response)=>{
       setData(response.data);
-      console.log("불러오기 성공!",response);
+      console.log("불러오기 성공:",response);
     })
   }
-  // const onChange=(event)=>{
-  //   setText(event.target.value);
-  // }
-  // const onChange2=(event)=>{
-  //   setName(event.target.value);
-  // }
+
+  
+  const onChange=(event)=>{
+    setMyname(event.target.value);
+  }
+
 
   axios.defaults.headers['Access-Control-Allow-Origin']='*';
   axios.defaults.withCredentials=true;
@@ -251,10 +266,11 @@ height="50"
 <a>당신의 이름</a> 
 &nbsp;&nbsp;&nbsp;&nbsp;
 
-<StyledInput 
+<StyledInput onChange={onChange}
 placeholder={`이름을 입력해주세요.`}
 type="text"
 ref={nameRef}
+value={myname}
 />
 
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -265,9 +281,9 @@ width="16px"
 height="16px"
 /> 이름 확인
 </div></StyledButton> 
-<ModalDB open={modalOpen} close={closeModal} header="이름 확인">
+<ModalDB open={modalOpen} close={onClickNamecheck} header="이름 확인">
         환영합니다.<br/>
-        "이름 텍스트"님.
+        {myname}님.
       </ModalDB>
 
 <br/>
@@ -301,8 +317,9 @@ onClick={onClick}>추가 버튼</StyledButton2>
  <br/>
 
 
- <ResultArea>name: {name}</ResultArea>
- <ResultArea>text: {text}</ResultArea>
+ <ResultAreaName>name: {name}</ResultAreaName>
+ <ResultAreaText>text: {text}</ResultAreaText>
+ <ResultAreaText>{data}</ResultAreaText>
 
  {/* {name && (
         <textarea
