@@ -3,10 +3,16 @@ import FrontEnd from './pages/FrontEnd';
 import { GlobalStyle } from './GlobalStyles';
 import PlusBackend from './pages/PlusBackend';
 import PlusDB from './pages/PlusDB';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import axios from 'axios';
 import Loading from './pages/Loading';
+
+
+
 function App() {
+
+  const params=useParams();
+  console.log(params.token);
 
   return (
     <>
@@ -15,9 +21,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Loading />} />
-        <Route path="/FrontEnd" element={<FrontEnd />} />
-        <Route path="/PlusBackend" element={<PlusBackend />} />
-        <Route path="/PlusDB" element={<PlusDB/>}/>
+        <Route path="/FrontEnd/:token" element={<FrontEnd/>}/>
+        <Route path="/PlusBackend/:token" element={<PlusBackend />} />
+        <Route path="/PlusDB/:token" element={<PlusDB/>}/>
+
      
       </Routes>
     </BrowserRouter>

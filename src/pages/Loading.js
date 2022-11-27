@@ -12,6 +12,7 @@ export default function Loading() {
 
     const tokenkey=window.localStorage.getItem('token');
 
+
     axios.get(`${process.env.REACT_APP_URL}/instances/backend`, {
     headers: {
         Authorization: `Bearer ${tokenkey}`}
@@ -19,21 +20,27 @@ export default function Loading() {
     .then((response)=>{
         console.log(response);
         //nullable:true이면 ip 있는것(back이 있는 것), back 검사 후 rds검사하기 state로 reloading해주기
-        if (response.data['nullable']==true){
-            <Link to="/PlusBackend"></Link> //여기에 rds 검사
+        if (response.data['nullable']===true){
+            axios.get(`http://52.78.76.251/db`, {
+                headers: {
+                    Authorization: `Bearer ${tokenkey}`
+                }
+                })
+                if (response.data.code===200){
+                    <Link to="/PlusDB?token=tokenkey"></Link>
+                }
+                else{
+                    <Link to="/PlusBackend?token=tokenkey"></Link> //여기에 rds 검사
+                }
         }
+      
         else{
-            <Link to="/Frontend"></Link>
+            <Link to="/Frontend?token=tokenkey"></Link>
         }
     })
     
 
-    // axios.get(`http://52.78.76.251/db`, {
-    //     headers: {
-    //         Authorization: `Bearer ${tokenkey}`
-    //     }
-    //     })
-    
+   
 
 
     return <div>Loading</div>
