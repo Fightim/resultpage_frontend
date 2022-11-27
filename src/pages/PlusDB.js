@@ -6,7 +6,8 @@ import ModalDB from "./ModalDB"
 import { useState,useEffect } from "react";
 import axios from "axios";
 
-
+//해야할일: 불러오는 텍스트가 많을 경우 스크롤 가능하게 개발하기, 저장된 텍스트만 나오게하기 or 입력된텍스트만 나오게하기 settext초기화를 해도되는걸까?
+//로딩페이지 만들기 : 페이지 로딩될때 백앤드, rds 검사해서 링크 라우터하기, 로그인해서 토큰 받아서 그걸 헤더에 담아서 back에 요청
 const StyledInput=styled.input`
 height: 36px;
 width: 806px;
@@ -117,12 +118,12 @@ margin:0;
 `;
 
 const ResultAreaText= styled.button`
-height: 200px;
+height: 100px;
 width: 964px;
 background-color: white;
 border-radius: 5px;
-border-color:grey;
-font-size:30px;
+border:0;
+font-size:15px;
 padding:0;
 margin:0;
 `;
@@ -192,6 +193,7 @@ function PlusDB() {
       setData(JSON.stringify(response.data));
       console.log("불러오기 성공:",response);
     })
+
   }
 
   
@@ -312,10 +314,10 @@ onClick={onClick}>추가 버튼</StyledButton2>
  <br/>
 
 
- <ResultAreaName>name: {name}</ResultAreaName>
- <ResultAreaText>text: {text}</ResultAreaText>
- <ResultAreaText>{data}</ResultAreaText>
 
+ <ResultAreaText className="inputText">입력 텍스트 <br/>{text} </ResultAreaText>
+ <br/>
+ <ResultAreaText className="savedText"> 저장된 텍스트 <br/>{data}</ResultAreaText>
  {/* {name && (
         <textarea
           rows={7}

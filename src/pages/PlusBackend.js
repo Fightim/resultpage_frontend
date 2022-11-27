@@ -1,9 +1,11 @@
-import React from "react";
+import React,{useRef} from "react";
 import styled from "styled-components";
 import {Box, Grommet,Button, Button as GrommetButton,Card,CardBody,CardFooter,CardHeader} from 'grommet';
 import "./FrontEnd.css"
 import ModalFront from './ModalFront'
 import { useState } from "react";
+import axios from "axios";
+
 const StyledInput=styled.input`
 height: 36px;
 width: 806px;
@@ -90,6 +92,17 @@ const AppBar=(props)=>(
   />
 );
 
+const ResultAreaText= styled.button`
+height: 100px;
+width: 964px;
+background-color: white;
+border-radius: 5px;
+border:0;
+font-size:15px;
+padding:0;
+margin:0;
+`;
+
 
 
 function PlusBackend() {
@@ -101,6 +114,33 @@ function PlusBackend() {
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  const [name,setName]=useState(null);
+  const [text,setText]=useState(null);
+  const nameRef = useRef(null);
+  const textRef = useRef(null);
+  const [myname,setMyname]=useState("");
+
+  const onClick=()=>{
+    axios.post("http://52.78.76.251/text",
+      {
+      name:nameRef.current.value,
+      text:textRef.current.value
+    })
+    .then((response)=>{
+      setText(JSON.stringify(response.data));
+      setName(JSON.stringify(response.data));
+      
+      console.log("responseasdadasda : ",response);
+    })
+    
+    }
+
+    const onChange=(event)=>{
+      setMyname(event.target.value);
+    }
+  
+  
 
   return (
     <center>
@@ -160,7 +200,11 @@ height="50"
 <br/>
 <a>당신의 이름</a> 
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledInput placeholder={`이름을 입력해주세요.`}/>
+<StyledInput onChange={onChange}
+placeholder={`이름을 입력해주세요.`}
+type="text"
+ref={nameRef}
+/>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledButton onClick={openModal}><div className="apply">
 <img className="checkimg"
@@ -178,9 +222,13 @@ height="16px"
 <br/>
 <a>텍스트 입력</a>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledInput placeholder={`아무 텍스트나 입력해주세요.`}/>
+<StyledInput 
+placeholder={`아무 텍스트나 입력해주세요.`}
+type="text"
+ref={textRef}
+/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledButton2>추가 버튼</StyledButton2>
+<StyledButton2 onClick={onClick}>추가 버튼</StyledButton2>
 
 <br/>
 <br/>
@@ -191,6 +239,8 @@ height="16px"
  <Box direction='column'>
 
  <StyledButton3>결과</StyledButton3>
+
+ <ResultAreaText className="inputText">입력 텍스트 <br/>{text} </ResultAreaText>
 </Box>
 
 </AppBar>
