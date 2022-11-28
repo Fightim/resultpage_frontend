@@ -5,12 +5,9 @@ import { Link } from "react-router-dom";
 
 
 export default function Loading() {
-    const location = useLocation();
-    console.log(location.search);
+    const params = useParams();
+    const tokenkey = params.token;
     //location.search가 token임 (localstorage로 저장하기)이거를 주함오빠가 링크뒤에 http://localhost:3000/loading?zxczdfsfgdhggcghcj 이런식으로 보내주면 뒤에 저게 토큰이에욤
-    window.localStorage.setItem('token',location.search);
-
-    const tokenkey=window.localStorage.getItem('token');
 
 
     axios.get(`${process.env.REACT_APP_URL}/instances/backend`, {
@@ -25,17 +22,22 @@ export default function Loading() {
                 headers: {
                     Authorization: `Bearer ${tokenkey}`
                 }
-                })
-                if (response.data.code===200){
-                    <Link to="/PlusDB?token=tokenkey"></Link> //여기도 :token 이렇게해야하낭
+                }).then((response)=>{
+                    console.log(response);
+                    if (response.data.code===200){
+                        <Link to={"/PlusDB/" + tokenkey} ></Link> //여기도 :token 이렇게해야하낭
+                    }
+                    else{
+                        <Link to={"/PlusBackend/" + tokenkey}></Link> //여기에 rds 검사
+                    }
                 }
-                else{
-                    <Link to="/PlusBackend?token=tokenkey"></Link> //여기에 rds 검사
-                }
+                )
+       
+ 
         }
       
         else{
-            <Link to="/Frontend?token=tokenkey"></Link>
+            <Link to={"/Frontend/" + tokenkey}></Link>
         }
     })
     
