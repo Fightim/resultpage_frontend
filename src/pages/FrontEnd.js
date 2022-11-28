@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import {Box, Grommet,Button, Button as GrommetButton,Card,CardBody,CardFooter,CardHeader} from 'grommet';
+import {Box, Grommet} from 'grommet';
 import "./FrontEnd.css"
 import ModalFront from './ModalFront'
 import { useState } from "react";
+import checkimg from '../images/pngwing 3.png'
+import ximg from '../images/pngwing 1.png'
+import applyimg from '../images/apply.png'
 
 const StyledInput=styled.input`
 height: 36px;
@@ -132,35 +135,6 @@ function FrontEnd() {
 <br/>
 <br/>
 
-{/* <div style={{display:"flex", alignContent:"center"}}> */}
- {/* <div className="out">
-  <div className="in">
-<Card height="100px" width="100px" background="light-1">
-  <CardHeader pad="14px" height="35px" background="#124271">Front-end</CardHeader>
-  <CardBody background="light-2">Body</CardBody>
-</Card>
-  </div>
-
-  &emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;
-
-  <div className="in">
-<Card  height="100px" width="100px" background="light-1">
-  <CardHeader pad="17px" height="35px" background="#124271">Back-end</CardHeader>
-  <CardBody background="light-2">Body</CardBody>
-</Card>
-  </div>
-
-  &emsp;&emsp;&emsp;&emsp;
-&emsp;&emsp;&emsp;&emsp;
-
-  <div className="in">
-<Card  height="100px" width="100px" background="light-1">
-  <CardHeader pad="19px" height="35px" background="#124271">DB</CardHeader>
-  <CardBody background="light-2">Body</CardBody>
-</Card>
-  </div>
-</div> */}
 
 <div className="out">
 
@@ -171,7 +145,8 @@ function FrontEnd() {
 
 <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 3.png"
+alt="check"
+src={checkimg}
 width="50"
 height="50"
 /> 
@@ -188,7 +163,8 @@ height="50"
   </StyledButton5>
   <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 1.png"
+alt="check"
+src={ximg}
 width="50"
 height="50"
 /> 
@@ -202,7 +178,8 @@ height="50"
   </StyledButton5>
   <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 1.png"
+alt="x"
+src={ximg}
 width="50"
 height="50"
 /> 
@@ -217,7 +194,8 @@ height="50"
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledButton onClick={openModal}><div className="apply">
 <img className="checkimg"
-src="img/apply.png"
+alt="apply"
+src={applyimg}
 width="16px"
 height="16px"
 /> 이름 확인

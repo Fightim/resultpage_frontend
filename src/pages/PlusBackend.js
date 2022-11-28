@@ -1,10 +1,13 @@
 import React,{useRef} from "react";
 import styled from "styled-components";
-import {Box, Grommet,Button, Button as GrommetButton,Card,CardBody,CardFooter,CardHeader} from 'grommet';
+import {Box, Grommet} from 'grommet';
 import "./FrontEnd.css"
 import ModalFront from './ModalFront'
 import { useState } from "react";
 import axios from "axios";
+import checkimg from '../images/pngwing 3.png'
+import ximg from '../images/pngwing 1.png'
+import applyimg from '../images/apply.png'
 
 const StyledInput=styled.input`
 height: 36px;
@@ -158,7 +161,8 @@ function PlusBackend() {
 
 <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 3.png"
+alt="check"
+src={checkimg}
 width="50"
 height="50"
 /> 
@@ -175,7 +179,8 @@ height="50"
   </StyledButton5>
   <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 3.png"
+alt="check"
+src={checkimg}
 width="50"
 height="50"
 /> 
@@ -189,7 +194,8 @@ height="50"
   </StyledButton5>
   <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 1.png"
+alt="x"
+src={ximg}
 width="50"
 height="50"
 /> 
@@ -208,7 +214,8 @@ ref={nameRef}
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledButton onClick={openModal}><div className="apply">
 <img className="checkimg"
-src="img/apply.png"
+alt="apply"
+src={applyimg}
 width="16px"
 height="16px"
 /> 이름 확인

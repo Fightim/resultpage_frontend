@@ -3,11 +3,11 @@ import styled from "styled-components";
 import {Box, Grommet} from 'grommet';
 import "./FrontEnd.css"
 import ModalDB from "./ModalDB"
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
+import checkimg from '../images/pngwing 3.png'
+import applyimg from '../images/apply.png'
 
-//해야할일: 불러오는 텍스트가 많을 경우 스크롤 가능하게 개발하기, 저장된 텍스트만 나오게하기 or 입력된텍스트만 나오게하기 settext초기화를 해도되는걸까?
-//로딩페이지 만들기 : 페이지 로딩될때 백앤드, rds 검사해서 링크 라우터하기, 로그인해서 토큰 받아서 그걸 헤더에 담아서 back에 요청
 const StyledInput=styled.input`
 height: 36px;
 width: 806px;
@@ -105,17 +105,6 @@ const AppBar=(props)=>(
   />
 );
 
-const ResultAreaName= styled.button`
-height: 50px;
-width: 964px;
-background-color: white;
-border-radius: 5px;
-border-color:grey;
-font-size:30px;
-border:0;
-padding:0;
-margin:0;
-`;
 
 const ResultAreaText= styled.button`
 height: 100px;
@@ -139,18 +128,6 @@ function PlusDB() {
     setModalOpen(false);
   };
 
-  //axios api 호출하기
-
-  //API GET 하는 방법
-  // const onClick=()=>{
-  //   axios
-  //     .get("http://52.78.76.251/text")
-  //     .then((response)=>{
-  //       setData(response.data);
-  //     });
-      
-  // };
-
 
   const [name,setName]=useState(null);
   const [text,setText]=useState(null);
@@ -158,16 +135,7 @@ function PlusDB() {
   const textRef = useRef(null);
   const [data,setData]=useState("");
   const [myname,setMyname]=useState("");
-  // const onClick=()=>{
-  //   axios.post("http://52.78.76.251/text",{
-  //     name:name,
-  //     text:text
-  //   })
-  //   .then((response)=>{
-  //     setText(response.text);
-  //     setName(response.name);
-  //   });
-  // }
+
 
   //추가 버튼
   const onClick=()=>{
@@ -220,7 +188,8 @@ function PlusDB() {
 
 <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 3.png"
+alt="check"
+src={checkimg}
 width="50"
 height="50"
 /> 
@@ -237,7 +206,8 @@ height="50"
   </StyledButton5>
   <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 3.png"
+alt="check"
+src={checkimg}
 width="50"
 height="50"
 /> 
@@ -251,7 +221,8 @@ height="50"
   </StyledButton5>
   <div className="check" style={{margin:6}}>
 <img className="checkimg"
-src="img/pngwing 3.png"
+alt="check"
+src={checkimg}
 width="50"
 height="50"
 /> 
@@ -273,7 +244,7 @@ value={myname}
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledButton onClick={openModal}><div className="apply">
 <img className="checkimg"
-src="img/apply.png"
+src={applyimg}
 width="16px"
 height="16px"
 /> 이름 확인
@@ -318,21 +289,7 @@ onClick={onClick}>추가 버튼</StyledButton2>
  <ResultAreaText className="inputText">입력 텍스트 <br/>{text} </ResultAreaText>
  <br/>
  <ResultAreaText className="savedText"> 저장된 텍스트 <br/>{data}</ResultAreaText>
- {/* {name && (
-        <textarea
-          rows={7}
-          value={JSON.stringify(name, null, 2)}
-          readOnly={true}
-        />
-    )}
 
- {text && (
-        <textarea
-          rows={7}
-          value={JSON.stringify(text, null, 2)}
-          readOnly={true}
-        />
-    )} */}
 
 </Box>
 </AppBar>

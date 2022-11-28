@@ -1,6 +1,6 @@
 import React from 'react';
 import './ModalFront.css';
-
+import applyimg from '../images/apply.png'
 const ModalFront = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
@@ -22,7 +22,8 @@ const ModalFront = (props) => {
             <button className="close" onClick={close}> 
             <div className="apply">
             <img className="checkimg"
-                src="img/apply.png"
+                alt="check"
+                src={applyimg}
                 width="16px"
                 height="16px"/>
               &nbsp;확인 </div>
