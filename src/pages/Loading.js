@@ -27,7 +27,7 @@ export default function Loading() {
                 }
                 })
                 if (response.data.code===200){
-                    <Link to="/PlusDB?token=tokenkey"></Link>
+                    <Link to="/PlusDB?token=tokenkey"></Link> //여기도 :token 이렇게해야하낭
                 }
                 else{
                     <Link to="/PlusBackend?token=tokenkey"></Link> //여기에 rds 검사
@@ -43,6 +43,6 @@ export default function Loading() {
    
 
 
-    return <div>Loading</div>
+    return <div>Loading {tokenkey}</div>
 }
 

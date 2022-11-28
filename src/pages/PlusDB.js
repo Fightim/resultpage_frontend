@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
-import {Box, Grommet,Button, Button as GrommetButton,Card,CardBody,CardFooter,CardHeader} from 'grommet';
+import {Box, Grommet} from 'grommet';
 import "./FrontEnd.css"
 import ModalDB from "./ModalDB"
 import { useState,useEffect } from "react";
