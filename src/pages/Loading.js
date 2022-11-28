@@ -9,7 +9,7 @@ export default function Loading() {
     const tokenkey = params.token;
     
     useEffect(()=>{
-            axios.get(`${process.env.REACT_APP_URL}/instances/backend`, {
+            axios.get(`https://dev.cloud-gui.com/instances/backend`, {
             headers: {
                 Authorization: `Bearer ${tokenkey}`}
             })
@@ -17,7 +17,7 @@ export default function Loading() {
                 console.log(response);
                 //nullable:true이면 ip 있는것(back이 있는 것), back 검사 후 rds검사하기 state로 reloading해주기
                 if (response.data.publicIp!==null){
-                    axios.get(`http://52.78.76.251/${response.data.publicIp}`, {
+                    axios.get(`${response.data.publicIp}/db`, {
                         headers: {
                             Authorization: `Bearer ${tokenkey}`
                         }
