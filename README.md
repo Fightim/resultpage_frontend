@@ -68,3 +68,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## how to build docker image
+docker 이미지를 빌드하기 전에 `npm run build`로 프로젝트를 build 해야합니다.  
+
+```shell 
+docker build -t [docker-image-name] [build path]
+```
+
+## how to run docker image
+```shell
+docker run -it -p [source port]:[destination port] -d [docker-image-name] 
+```
