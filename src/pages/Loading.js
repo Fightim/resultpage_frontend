@@ -27,7 +27,7 @@ export default function Loading() {
                                 navigate("/PlusDB/" + tokenkey);
                                 //여기도 :token 이렇게해야하낭
                             }
-                            else{
+                            else if(response.status===404){
                                 navigate("/PlusBackend/" + tokenkey);
                                  //여기에 rds 검사
                             }
