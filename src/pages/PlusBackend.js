@@ -104,6 +104,7 @@ border:0;
 font-size:15px;
 padding:0;
 margin:0;
+overflow:scroll;
 `;
 
 

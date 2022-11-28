@@ -61,15 +61,6 @@ const StyledButton5 = styled.button`
   border-color:#124271;
 `;
 
-const LargeBox = styled.button`
-  height: 362px;
-  width: 964px;
-  background-color: white;
-  border-radius: 5px;
-  border-color:grey;
-  padding:0;
-  margin:0;
-`;
 
 
 const ShadowedBox = styled.div`
@@ -115,6 +106,7 @@ border:0;
 font-size:15px;
 padding:0;
 margin:0;
+overflow:scroll;
 `;
 
 
@@ -280,15 +272,10 @@ onClick={onClick}>추가 버튼</StyledButton2>
  <Box direction='column'>
  <StyledButton3>결과</StyledButton3>
 
- <br/>
- <br/>
- <br/>
-
-
 
  <ResultAreaText className="inputText">입력 텍스트 <br/>{text} </ResultAreaText>
  <br/>
- <ResultAreaText className="savedText"> 저장된 텍스트 <br/>{data}</ResultAreaText>
+ <ResultAreaText className="savedText"> 저장된 텍스트<br/>{data}</ResultAreaText>
 
 
 </Box>
