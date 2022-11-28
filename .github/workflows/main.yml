@@ -37,4 +37,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: deokam/result-page:lastest
+          tags: deokam/result-page:latest
