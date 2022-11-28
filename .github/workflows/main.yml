@@ -15,11 +15,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: install packages
-        uses: actions/checkout@v3
         run: npm install
 
       - name: build react projects
-        uses: actions/checkout@v3
         run: npm run build
 
       - name: Set up Docker Buildx
