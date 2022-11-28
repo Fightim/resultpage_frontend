@@ -16,7 +16,7 @@ export default function Loading() {
             .then((response)=>{
                 console.log(response);
                 //nullable:true이면 ip 있는것(back이 있는 것), back 검사 후 rds검사하기 state로 reloading해주기
-                if (response.data!==""){
+                if (response.data.publicIp!==null){
                     axios.get(`http://52.78.76.251/db`, {
                         headers: {
                             Authorization: `Bearer ${tokenkey}`
@@ -37,7 +37,7 @@ export default function Loading() {
          
                 }
               
-                else{
+                else if(response.data.publicIp==null){
                     navigate("/FrontEnd/" + tokenkey);
             }})
     },[]);
