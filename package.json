@@ -17,8 +17,7 @@
     "react-tap-event-plugin": "3.0.3",
     "styled-components": "5.3.6",
     "styled-reset": "4.4.2",
-    "web-vitals": "2.1.4",
-    "proxy":"http://localhost:3000/"
+    "web-vitals": "2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
