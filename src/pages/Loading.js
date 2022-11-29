@@ -38,15 +38,37 @@ export default function Loading() {
          
                 }
               
-                else{
+                else if(response.data.publicIp==null){
                     navigate("/FrontEnd/" + tokenkey);
-            }})
+            }
+                else if(error.request){
+                    console.log(error.request);
+                    navigate("/FrontEnd/" + tokenkey);
+                }
+                else if(error.response){
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    navigate("/FrontEnd/" + tokenkey);
+                }
+        
+        })
+        .catch(function(error) {
+            if(error.request){
+                console.log(error.request);
+                navigate("/FrontEnd/" + tokenkey);
+            }
+            else if(error.response){
+                console.log(error.response.data);
+                console.log(error.response.status);
+                navigate("/FrontEnd/" + tokenkey);
+            }
+        });
     },[]);
     
 
    
 
 
-    return <div>Loading..... {tokenkey}</div>
+    return <div>Loading... <br/>{tokenkey}</div>
 }
 
