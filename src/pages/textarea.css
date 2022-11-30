@@ -1,0 +1,16 @@
+.input-text{
+margin: auto 0;
+word-break: break-all;
+word-wrap: normal;
+padding-left:10px;
+padding-right:10px;
+}
+
+.saved-text{
+margin:auto 0;
+overflow-y:scroll;
+word-break: break-all;
+word-wrap: normal;
+padding-left:10px;
+padding-right:10px;
+}

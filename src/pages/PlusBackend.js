@@ -8,6 +8,7 @@ import axios from "axios";
 import checkimg from '../images/pngwing 3.png'
 import ximg from '../images/pngwing 1.png'
 import applyimg from '../images/apply.png'
+import { useLocation } from "react-router-dom";
 
 const StyledInput=styled.input`
 height: 36px;
@@ -110,6 +111,7 @@ overflow:scroll;
 
 
 function PlusBackend() {
+  const { state: publicIp } = useLocation();
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -126,7 +128,7 @@ function PlusBackend() {
   const [myname,setMyname]=useState("");
 
   const onClick=()=>{
-    axios.post("http://52.78.76.251/text",
+    axios.post(`http://${publicIp}/text`,
       {
       name:nameRef.current.value,
       text:textRef.current.value

@@ -8,6 +8,7 @@ import axios from "axios";
 import checkimg from '../images/pngwing 3.png'
 import applyimg from '../images/apply.png'
 import { useLocation } from "react-router-dom";
+import './textarea.css';
 
 const StyledInput=styled.input`
 height: 36px;
@@ -275,11 +276,23 @@ onClick={onClick}>추가 버튼</StyledButton2>
  <StyledButton3>결과</StyledButton3>
 
 
- <ResultAreaText className="inputText">입력 텍스트 <br/>{text} </ResultAreaText>
+ {/* <ResultAreaText className="inputText">입력 텍스트 <br/>{text} </ResultAreaText>
  <br/>
- <ResultAreaText className="savedText"> 저장된 텍스트<br/>{data}</ResultAreaText>
+ <ResultAreaText className="savedText"> 저장된 텍스트<br/>{data}</ResultAreaText> */}
+<br/>
 
+<p className="input-text">
+입력 텍스트 <br/>{text}
 
+</p>
+<br/>
+<br/>
+
+<p className="saved-text">
+저장된 텍스트<br/>{data}
+</p>
+
+<br/>
 </Box>
 </AppBar>
 
