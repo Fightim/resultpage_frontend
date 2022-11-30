@@ -1,8 +1,6 @@
 import React from 'react';
 import './ModalDB.css';
-// import { useState } from 'react';
-// import axios from 'axios';
-
+import applyimg from '../images/apply.png'
 
 const ModalDB = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
@@ -26,7 +24,8 @@ const ModalDB = (props) => {
             <button className="close2" onClick={close}> 
             <div className="apply">
             <img className="checkimg"
-                src="img/apply.png"
+                alt="check"
+                src={applyimg}
                 width="16px"
                 height="16px"/>
               &nbsp;확인 </div>

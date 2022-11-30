@@ -1,13 +1,13 @@
 import {useNavigate, useParams } from "react-router-dom"
 import axios from "axios";
 import React, { useEffect } from "react";
-
+import { useState } from "react";
 
 export default function Loading() {
     const navigate = useNavigate();
     const params = useParams();
     const tokenkey = params.token;
-
+    const setIP=useState("");
 
     useEffect(()=>{
             axios.get(`https://dev.cloud-gui.com/instances/backend`, {
@@ -16,8 +16,10 @@ export default function Loading() {
             })
             .then((response)=>{
                 console.log(response);
+                
                 //nullable:true이면 ip 있는것(back이 있는 것), back 검사 후 rds검사하기 state로 reloading해주기
                 if (response.data.publicIp!==null){
+                    const publicIp = response.data.publicIp;
                     axios.get(`http://${response.data.publicIp}/db`, {
                         headers: {
                             Authorization: `Bearer ${tokenkey}`
@@ -25,11 +27,11 @@ export default function Loading() {
                         }).then((response)=>{
                             console.log(response);
                             if (response.status===200){
-                                navigate("/PlusDB/" + tokenkey);
+                                navigate("/PlusDB/" + tokenkey, { state: publicIp });
                                 //여기도 :token 이렇게해야하낭
                             }
                             else if(response.status===404){
-                                navigate("/PlusBackend/" + tokenkey);
+                                navigate("/PlusBackend/" + tokenkey, );
                                  //여기에 rds 검사
                             }
                         }
@@ -50,6 +52,7 @@ export default function Loading() {
                 else{
                     navigate("/FrontEnd/" + tokenkey);
             }
+            const setIP=response.data.publicIp;
         })
         .catch((error)=> {
             if(error.request){

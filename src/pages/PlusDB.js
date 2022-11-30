@@ -7,6 +7,7 @@ import { useState } from "react";
 import axios from "axios";
 import checkimg from '../images/pngwing 3.png'
 import applyimg from '../images/apply.png'
+import { useLocation } from "react-router-dom";
 
 const StyledInput=styled.input`
 height: 36px;
@@ -110,7 +111,8 @@ overflow:scroll;
 `;
 
 
-function PlusDB() {
+function PlusDB(props) {
+  const { state: publicIp } = useLocation();
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -131,7 +133,7 @@ function PlusDB() {
 
   //추가 버튼
   const onClick=()=>{
-    axios.post("http://52.78.76.251/text",
+    axios.post(`http://${publicIp}/text`,
       {
       name:nameRef.current.value,
       text:textRef.current.value
@@ -148,7 +150,7 @@ function PlusDB() {
   //이름 확인
   const onClickNamecheck=()=>{
     closeModal();
-    axios.get(`http://52.78.76.251/text/${nameRef.current.value}`)
+    axios.get(`http://${publicIp}/text/${nameRef.current.value}`)
     .then((response)=>{
       setData(JSON.stringify(response.data));
       console.log("불러오기 성공:",response);
