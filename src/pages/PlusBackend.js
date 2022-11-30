@@ -9,6 +9,7 @@ import checkimg from '../images/pngwing 3.png'
 import ximg from '../images/pngwing 1.png'
 import applyimg from '../images/apply.png'
 import { useLocation } from "react-router-dom";
+import './textarea.css';
 
 const StyledInput=styled.input`
 height: 36px;
@@ -250,7 +251,13 @@ ref={textRef}
 
  <StyledButton3>결과</StyledButton3>
 
- <ResultAreaText className="inputText">입력 텍스트 <br/>{text} </ResultAreaText>
+ <br/>
+
+<p className="input-text">
+입력 텍스트 <br/>{text}
+
+</p>
+<br/>
 </Box>
 
 </AppBar>
