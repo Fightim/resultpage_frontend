@@ -112,7 +112,8 @@ overflow:scroll;
 
 
 function PlusBackend() {
-  const { state: publicIp } = useLocation();
+  const location=useLocation();
+  const {publicIp}=location.state;
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -139,6 +140,7 @@ function PlusBackend() {
       setName(JSON.stringify(response.data));
       
       console.log("responseasdadasda : ",response);
+      console.log(location);
     })
     
     }
