@@ -112,8 +112,7 @@ overflow:scroll;
 
 
 function PlusBackend() {
-  const location=useLocation();
-  const {publicIp}=location.state;
+  const {state: publicIp2}=useLocation();
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -130,7 +129,7 @@ function PlusBackend() {
   const [myname,setMyname]=useState("");
 
   const onClick=()=>{
-    axios.post(`http://${publicIp}/text`,
+    axios.post(`http://${publicIp2}/text`,
       {
       name:nameRef.current.value,
       text:textRef.current.value
