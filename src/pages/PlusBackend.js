@@ -128,7 +128,7 @@ function PlusBackend() {
   const textRef = useRef(null);
   const [myname,setMyname]=useState("");
 
-  const onClick=()=>{
+  const onClickbackend=()=>{
     axios.post(`http://${publicIp2}/text`,
       {
       name:nameRef.current.value,
@@ -137,7 +137,6 @@ function PlusBackend() {
     .then((response)=>{
       setText(JSON.stringify(response.data));
       setName(JSON.stringify(response.data));
-      
       console.log("responseasdadasda : ",response);
   
     })
@@ -240,7 +239,7 @@ type="text"
 ref={textRef}
 />
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledButton2 onClick={onClick}>추가 버튼</StyledButton2>
+<StyledButton2 onClick={onClickbackend}>추가 버튼</StyledButton2>
 
 <br/>
 <br/>
