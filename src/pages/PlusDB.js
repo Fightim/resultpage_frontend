@@ -112,7 +112,7 @@ overflow:scroll;
 `;
 
 
-function PlusDB(props) {
+function PlusDB() {
   const { state: publicIp } = useLocation();
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -130,9 +130,10 @@ function PlusDB(props) {
   const textRef = useRef(null);
   const [data,setData]=useState("");
   const [myname,setMyname]=useState("");
+  const [mytext,setMytext]=useState("");
 
 
-  //추가 버튼
+  //추가 버튼 
   const onClick=()=>{
     axios.post(`http://${publicIp}/text`,
       {
@@ -144,6 +145,8 @@ function PlusDB(props) {
       setName(JSON.stringify(response.data));
       
       console.log("responseasdadasda : ",response);
+      
+      onReset();
     })
     
     }
@@ -164,6 +167,14 @@ function PlusDB(props) {
     setMyname(event.target.value);
   }
 
+  const onChange2=(event)=>{
+    setMytext(event.target.value);
+  }
+
+  const onReset=(event)=>{
+    setMytext("");
+    setMyname("");
+  }
 
 
 
@@ -253,17 +264,17 @@ height="16px"
 <br/>
 <a>텍스트 입력</a>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledInput 
+<StyledInput onChange={onChange2}
 placeholder={`아무 텍스트나 입력해주세요.`}
 type="text"
 ref={textRef}
+value={mytext}
 />
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledButton2 
 onClick={onClick}>추가 버튼</StyledButton2>
-
 
 
 

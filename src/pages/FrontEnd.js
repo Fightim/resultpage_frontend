@@ -212,7 +212,11 @@ height="16px"
 &nbsp;&nbsp;&nbsp;&nbsp;
 <StyledInput placeholder={`아무 텍스트나 입력해주세요.`}/>
 &nbsp;&nbsp;&nbsp;&nbsp;
-<StyledButton2>추가 버튼</StyledButton2>
+<StyledButton2 onClick={openModal}>추가 버튼</StyledButton2>
+<ModalFront open={modalOpen} close={closeModal} header="텍스트 추가">
+        Back-end가 없습니다. <br/>
+        텍스트를 추가할 수 없습니다.
+      </ModalFront>
 
 <br/>
 <br/>

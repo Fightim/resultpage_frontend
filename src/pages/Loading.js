@@ -39,12 +39,12 @@ export default function Loading() {
                         .catch((error)=>{
                             if(error.request){
                                 console.log(error.request);
-                                navigate("/FrontEnd/" + tokenkey);
+                                navigate("/PlusBackend/" + tokenkey);
                             }
                             else if(error.response){
                                 console.log(error.response.data);
                                 console.log(error.response.status);
-                                navigate("/FrontEnd/" + tokenkey);
+                                navigate("/PlusBackend/" + tokenkey);
                             }
                         })
                 }
@@ -65,7 +65,7 @@ export default function Loading() {
                 navigate("/FrontEnd/" + tokenkey);
             }
         });
-    },[]);
+    },[]); 
     
 
    
