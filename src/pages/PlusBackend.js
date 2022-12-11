@@ -139,7 +139,7 @@ function PlusBackend() {
       setName(JSON.stringify(response.data));
       
       console.log("responseasdadasda : ",response);
-      console.log(location);
+  
     })
     
     }
