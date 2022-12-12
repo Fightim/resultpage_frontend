@@ -268,16 +268,20 @@ function PlusDB() {
             <br />
 
             <p className="input-text">
-              입력 텍스트 <br />
+              🚩 입력 텍스트 🚩
+              <br />
+              <br />
               {text}
             </p>
             <br />
             <br />
 
             <p className="saved-text">
-              저장된 텍스트
+              🚩 저장된 텍스트 🚩
               <br />
-              {data}
+              <br />
+              {data &&
+                data.map((oneData) => <div key={oneData.id}>🌐 {oneData}</div>)}
             </p>
 
             <br />
