@@ -8,7 +8,7 @@ import axios from "axios";
 import checkimg from "../images/pngwing 3.png";
 import ximg from "../images/pngwing 1.png";
 import applyimg from "../images/apply.png";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "./textarea.css";
 
 const StyledInput = styled.input`
@@ -109,6 +109,7 @@ const ResultAreaText = styled.button`
 
 function PlusBackend() {
   const { state: publicIp } = useLocation();
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -123,6 +124,7 @@ function PlusBackend() {
   const nameRef = useRef(null);
   const textRef = useRef(null);
   const [myname, setMyname] = useState("");
+  const [mytext, setMytext] = useState("");
 
   const onClickbackend = () => {
     axios
@@ -132,13 +134,22 @@ function PlusBackend() {
       })
       .then((response) => {
         setText(JSON.stringify(response.data));
-        setName(JSON.stringify(response.data));
         console.log("responseasdadasda : ", response);
+        onReset();
       });
   };
 
   const onChange = (event) => {
     setMyname(event.target.value);
+  };
+
+  const onChange2 = (event) => {
+    setMytext(event.target.value);
+  };
+
+  const onReset = (event) => {
+    setMytext("");
+    setMyname("");
   };
 
   return (
@@ -197,6 +208,7 @@ function PlusBackend() {
           placeholder={`이름을 입력해주세요.`}
           type="text"
           ref={nameRef}
+          value={myname}
         />
         &nbsp;&nbsp;&nbsp;&nbsp;
         <StyledButton onClick={openModal}>
@@ -220,9 +232,11 @@ function PlusBackend() {
         <a>텍스트 입력</a>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <StyledInput
+        onChange={onChange2}
           placeholder={`아무 텍스트나 입력해주세요.`}
           type="text"
           ref={textRef}
+          value={mytext}
         />
         &nbsp;&nbsp;&nbsp;&nbsp;
         <StyledButton2 onClick={onClickbackend}>추가 버튼</StyledButton2>
@@ -237,7 +251,10 @@ function PlusBackend() {
             <br />
 
             <p className="input-text">
-              입력 텍스트 <br />
+              🚩 입력 텍스트 🚩
+     
+              <br />
+              <br />
               {text}
             </p>
             <br />
