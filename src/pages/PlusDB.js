@@ -281,7 +281,9 @@ function PlusDB() {
               <br />
               <br />
               {data &&
-                data.map((oneData) => <div key={oneData.id}>🌐 {oneData}</div>)}
+                [...data].map((oneData) => (
+                  <div key={oneData.id}>🌐 {oneData}</div>
+                ))}
             </p>
 
             <br />
