@@ -120,7 +120,7 @@ function PlusDB() {
   const [text, setText] = useState(null);
   const nameRef = useRef(null);
   const textRef = useRef(null);
-  const [data, setData] = useState("");
+  const [data, setData] = useState([]);
   const [myname, setMyname] = useState("");
   const [mytext, setMytext] = useState("");
 
@@ -279,8 +279,13 @@ function PlusDB() {
               <br />
               <br />
               {data &&
-                [...data].map((oneData) => (
-                  <div key={Math.random()}>🌐 {oneData}</div>
+                data.map((oneData) => (
+                  <React.Fragment key={oneData.id}>
+                    <div key={oneData.id}>
+                      🌐 {oneData.input_date} :: {oneData.input_text}
+                    </div>
+                    <br />
+                  </React.Fragment>
                 ))}
             </p>
 
