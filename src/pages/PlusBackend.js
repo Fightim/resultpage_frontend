@@ -126,18 +126,22 @@ function PlusBackend() {
   const [myname, setMyname] = useState("");
   const [mytext, setMytext] = useState("");
 
-  const onClickbackend = () => {
-    axios
-      .post(`http://${publicIp}/text`, {
-        name: nameRef.current.value,
-        text: textRef.current.value,
-      })
-      .then((response) => {
-        setText(JSON.stringify(response.data));
-        console.log("responseasdadasda : ", response);
-        onReset();
-      });
-  };
+  // const onClickbackend = () => {
+  //   axios
+  //     .post(`http://${publicIp}/text`, {
+  //       name: nameRef.current.value,
+  //       text: textRef.current.value,
+  //     })
+  //     .then((response) => {
+  //       setText(JSON.stringify(response.data));
+  //       console.log("responseasdadasda : ", response);
+  //       onReset();
+  //     });
+  // };
+
+  const onClickbackend=()=>{
+    setText("api 통신에 성공하였습니다.")
+  }
 
   const onChange = (event) => {
     setMyname(event.target.value);
@@ -251,7 +255,7 @@ function PlusBackend() {
             <br />
 
             <p className="input-text">
-              🚩 입력 텍스트 🚩
+              🚩 API 통신 결과 🚩
      
               <br />
               <br />
