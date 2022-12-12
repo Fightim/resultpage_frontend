@@ -147,7 +147,7 @@ function PlusDB() {
       .get(`http://${publicIp}/text/${nameRef.current.value}`)
       .then((response) => {
         setData(response.data);
-        console.log("불러오기 성공:", response);
+        console.log("불러오기 성공:", response.data);
       });
   };
 
@@ -279,7 +279,9 @@ function PlusDB() {
               <br />
               <br />
               {data &&
-                data.map((oneData) => <div key={oneData.id}>🌐 {oneData}</div>)}
+                [...data].map((oneData) => (
+                  <div key={Math.random()}>🌐 {oneData}</div>
+                ))}
             </p>
 
             <br />
