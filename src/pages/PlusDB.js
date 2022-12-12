@@ -117,7 +117,6 @@ function PlusDB() {
     setModalOpen(false);
   };
 
-  const [name, setName] = useState(null);
   const [text, setText] = useState(null);
   const nameRef = useRef(null);
   const textRef = useRef(null);
@@ -134,7 +133,6 @@ function PlusDB() {
       })
       .then((response) => {
         setText(JSON.stringify(response.data));
-        setName(JSON.stringify(response.data));
 
         console.log("responseasdadasda : ", response);
 
@@ -148,7 +146,7 @@ function PlusDB() {
     axios
       .get(`http://${publicIp}/text/${nameRef.current.value}`)
       .then((response) => {
-        setData(JSON.stringify(response.data));
+        setData(response.data);
         console.log("불러오기 성공:", response);
       });
   };
@@ -281,9 +279,7 @@ function PlusDB() {
               <br />
               <br />
               {data &&
-                [...data].map((oneData) => (
-                  <div key={oneData.id}>🌐 {oneData}</div>
-                ))}
+                data.map((oneData) => <div key={oneData.id}>🌐 {oneData}</div>)}
             </p>
 
             <br />
